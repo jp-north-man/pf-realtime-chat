@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
-import { Box, TextField, Button, Typography } from '@mui/material';
+import { Box, List, ListItem, Container, TextField, Button, Typography } from '@mui/material';
 import Layout from '@/components/Layout';
 import { useRouter } from 'next/router';
 import axios from 'axios';
@@ -41,18 +41,37 @@ const Top = () => {
 
   return (
     <Layout title="ホーム | チャット部屋作成">
-      <Box>
-        <TextField label="Room Name" value={roomName} onChange={(e) => setRoomName(e.target.value)} />
-        <Button variant="contained" color="primary" onClick={handleCreateRoom}>
-          Create Room
-        </Button>
-        <Typography variant="h6">Rooms:</Typography>
-        {rooms.map((room) => (
-          <Button onClick={() => navigateToRoom(room.id)} key={room.id}>
-            {room.name}
+      <Container maxWidth="sm">
+        <Box 
+          display="flex" 
+          justifyContent="space-between" 
+          alignItems="center" 
+          marginBottom="20px"
+        >
+          <TextField 
+            label="部屋の名前を入力" 
+            value={roomName} 
+            onChange={(e) => setRoomName(e.target.value)} 
+            style={{flexGrow: 1, marginRight: "10px", height: "56px"}}
+          />
+          <Button 
+            variant="contained" 
+            color="primary" 
+            onClick={handleCreateRoom}
+            style={{height: "56px"}}
+          >
+            作成
           </Button>
-        ))}
-      </Box>
+        </Box>
+        <Typography variant="h6">部屋一覧:</Typography>
+        <List>
+          {rooms.map((room) => (
+            <ListItem button key={room.id} onClick={() => navigateToRoom(room.id)}>
+              {room.name}
+            </ListItem>
+          ))}
+        </List>
+      </Container>
     </Layout>
   );
 };
