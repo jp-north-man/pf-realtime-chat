@@ -32,7 +32,7 @@ npm run dev
    
 ブラウザで http://localhost:3000 を開きます。   
 
-![gif]()
+![gif](https://github.com/jp-north-man/pf-realtime-chat/blob/main/media/demo.gif)
 
 # 注意   
 このアプリケーションはデモンストレーション用であり、本番環境での使用は推奨されません。特に、現在のバージョンでは認証やエラーハンドリングが完全には実装されていません。   
